@@ -12,7 +12,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  message: PropTypes.String.isRequired,
+  message: PropTypes.string.isRequired,
 }
 
 export default App
