@@ -12,7 +12,6 @@ import StartGame from './StartGame';
 import Title from './Title';
 import Leaderboard from './Leaderboard';
 import { signIn } from 'auth0-web';
-import CannonBall from './CannonBall';
 
 const Canvas = (props) => {
   const gameHeight = 1200;
