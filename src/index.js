@@ -24,4 +24,4 @@ store.dispatch(removeExpense({
 }))
 
 console.assert(store.getState().balance === 75)
-console.assert(store.getState().expense.length === 2)
+console.assert(store.getState().expenses.length === 2)
