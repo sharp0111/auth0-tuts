@@ -1,7 +1,7 @@
 {
   "name": "redux-node",
   "version": "1.0.0",
-  "description": "",
+  "description": "redux implementation with node, babel, jest",
   "main": "index.js",
   "scripts": {
     "start": "babel-node src/",
