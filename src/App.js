@@ -121,24 +121,42 @@ const AuthStatus = withRouter(({ history }) => (
   )
 ));
 
+// Link Component Customization
+const Contact = () => (
+  <div>
+    <h2>Contact Page</h2>
+  </div>
+)
+
+const CustomLink = ({ children, to, exact }) => (
+  <Route path={to} exact={exact} children={({ match }) => (
+    <div className={match ? 'active' : ''}>
+      {match ? '> ' : ''}
+      <Link to={to}>
+        {children}
+      </Link>
+    </div>
+  )}/>
+);
+
 class App extends Component {
   render() {
     return (
       <div>
         <ul>
-          <li><Link to="/">Home</Link></li>
+          {/* <li><Link to="/">Home</Link></li> */}
           <li><Link to="airports">Airport</Link></li>
           <li><Link to="/cities">Cities</Link></li>
           <li><Link to="/courses">Courses</Link></li>
           <li><Link to="/cities">Cities</Link></li>
         </ul>
 
-        <Route path="/" exact component={Home} />
+        {/* <Route path="/" exact component={Home} /> */}
         <Route path="/airports" component={Airport} />
         <Route path="/cities" component={City} />
         <Route path="/courses" component={Courses}/>
 
-        <Router>
+        {/* <Router> */}
           <div style={{width: 1000, margin: '0 auto'}}>
             <AuthStatus />
             <ul>
@@ -154,7 +172,22 @@ class App extends Component {
             <SecretRoute path='/private' component={Private} />
 
           </div>
-        </Router>
+        {/* </Router> */}
+
+          <div>
+            <CustomLink exact={true} to="/">
+              Home
+            </CustomLink>
+            <CustomLink to="/contact">
+              Contact
+            </CustomLink>
+
+            <hr/>
+
+            <Route exact path="/" component={Home}/>
+            <Route path="/contact" component={Contact}/>
+          </div>
+
       </div>
 
     );
