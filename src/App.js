@@ -1,28 +1,40 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import {connect} from 'react-redux';
+import actions from './actions';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+function App({food, searchTerm, searchTermChanged}) {
+  return (
+    <div>
+      <div className="search">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={e => searchTermChanged(e.target.value)}
+        />
       </div>
-    );
-  }
+      <table>
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Origin</th>
+          <th>Continent</th>
+        </tr>
+        </thead>
+        <tbody>
+        {food.map(theFood => (
+          <tr key={theFood.name}>
+            <td>{theFood.name}</td>
+            <td>{theFood.origin}</td>
+            <td>{theFood.continent}</td>
+          </tr>
+        ))}
+        </tbody>
+      </table>
+    </div>
+  );
 }
 
-export default App;
+export default connect(store => store, actions)(App);
