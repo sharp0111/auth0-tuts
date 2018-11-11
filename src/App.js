@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import actions from './actions';
+// import {connect} from 'react-redux';
+// import actions from './actions';
 import './App.css';
 
 function App({food, searchTerm, searchTermChanged}) {
@@ -37,4 +37,5 @@ function App({food, searchTerm, searchTermChanged}) {
   );
 }
 
-export default connect(store => store, actions)(App);
+// export default connect(store => store, actions)(App);
+export default App;
