@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
-import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Redirect, withRouter, Switch } from 'react-router-dom';
 import './App.css';
 
 // Basic Routing
@@ -183,9 +183,12 @@ class App extends Component {
             </CustomLink>
 
             <hr/>
-
-            <Route exact path="/" component={Home}/>
-            <Route path="/contact" component={Contact}/>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/contact" component={Contact}/>
+              {/* Handling Non-existent Routes */}
+              <Route render={() => (<div> Sorry, this page does not exist. </div>)} />
+            </Switch>
           </div>
 
       </div>
